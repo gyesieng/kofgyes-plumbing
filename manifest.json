@@ -1,0 +1,17 @@
+{
+  "name": "KOFGYES PLUMBING SERVICE",
+  "short_name": "KOFGYES Plumbing",
+  "start_url": "/kofgyes-plumbing/",
+  "scope": "/kofgyes-plumbing/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
