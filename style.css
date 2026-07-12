@@ -71,7 +71,7 @@ body{
 
 /* ===== HERO ===== */
 
-..hero{
+.hero{
     min-height:90vh;
     display:flex;
     align-items:flex-start;
@@ -97,7 +97,7 @@ body{
     margin:0 auto;
     font-size:20px;
     line-height:1.8;
-    color:#red;
+    color:red;
 }
 
 .hero-btn{
