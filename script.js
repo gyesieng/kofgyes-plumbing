@@ -95,3 +95,38 @@ ${problem}`;
     });
 
 }
+// ===== PWA Install =====
+
+let deferredPrompt;
+
+const installBanner = document.getElementById("installBanner");
+const installBtn = document.getElementById("installBtn");
+const closeInstall = document.getElementById("closeInstall");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    installBanner.style.display = "flex";
+
+});
+
+installBtn.addEventListener("click", async () => {
+
+    installBanner.style.display = "none";
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+});
+
+closeInstall.addEventListener("click", () => {
+
+    installBanner.style.display = "none";
+
+});
