@@ -1,6 +1,6 @@
 {
   "name": "KOFGYES PLUMBING SERVICE",
-  "short_name": "KOFGYES Plumbing",
+  "short_name": "KOFGYES PLUMBING",
   "start_url": "/kofgyes-plumbing/",
   "scope": "/kofgyes-plumbing/",
   "display": "standalone",
@@ -8,14 +8,15 @@
   "theme_color": "#0ea5e9",
   "orientation": "portrait",
   "icons": [
-  {
-    "src": "icon-192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  },
-  {
-    "src": "icon-512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
