@@ -1,152 +1,195 @@
-// =============================
-// KOFGYES Plumbing Service v2.0
-// =============================
-
-// Mobile Navigation
+// ===== MOBILE MENU =====
 
 const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 
-if(menuBtn && navMenu){
+menuBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+});
 
-    menuBtn.addEventListener("click", ()=>{
-
-        navMenu.classList.toggle("active");
-
-    });
-
-}
-
-// Close menu after clicking a link
-
-const links = document.querySelectorAll(".nav-menu a");
-
-links.forEach(link => {
-
+document.querySelectorAll(".nav-menu a").forEach(link => {
     link.addEventListener("click", () => {
-
         navMenu.classList.remove("active");
-
     });
+});
 
+// ===== SCROLL REVEAL =====
 
-});// ===== Scroll Animation =====
+const reveals = document.querySelectorAll(
+".about, .services, .why-us, .gallery, .stats, .testimonials, .faq, .contact, .booking, .service-area"
+);
 
-const fadeElements = document.querySelectorAll(".fade-up");
+function revealSections(){
 
-function revealOnScroll(){
+    reveals.forEach(section=>{
 
-    fadeElements.forEach((element)=>{
+        const top = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
 
-        const top = element.getBoundingClientRect().top;
-
-        const screen = window.innerHeight;
-
-        if(top < screen - 100){
-
-            element.classList.add("show");
-
+        if(top < windowHeight - 100){
+            section.classList.add("show");
         }
 
     });
 
 }
 
-window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll", revealSections);
 
-revealOnScroll();
-// ===== WhatsApp Booking Form =====
+revealSections();
+
+
+// ===== STATS COUNTER =====
+
+const counters = document.querySelectorAll(".stat-box h2");
+
+function runCounters(){
+
+    counters.forEach(counter=>{
+
+        const target = parseInt(counter.innerText);
+
+        if(isNaN(target)) return;
+
+        let count = 0;
+
+        const speed = target / 80;
+
+        const update = ()=>{
+
+            count += speed;
+
+            if(count < target){
+
+                counter.innerText = Math.floor(count) + "+";
+
+                requestAnimationFrame(update);
+
+            }else{
+
+                counter.innerText = target + "+";
+
+            }
+
+        };
+
+        update();
+
+    });
+
+}
+
+const statsSection = document.querySelector(".stats");
+
+let counterStarted = false;
+
+window.addEventListener("scroll",()=>{
+
+    if(counterStarted) return;
+
+    const top = statsSection.getBoundingClientRect().top;
+
+    if(top < window.innerHeight-100){
+
+        counterStarted = true;
+
+        runCounters();
+
+    }
+
+});
+// ===== FAQ ACCORDION =====
+
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item => {
+
+    const question = item.querySelector(".faq-question");
+
+    if(question){
+
+        question.addEventListener("click", () => {
+
+            faqItems.forEach(faq => {
+                if(faq !== item){
+                    faq.classList.remove("active");
+                }
+            });
+
+            item.classList.toggle("active");
+
+        });
+
+    }
+
+});
+// ===== BOOKING FORM =====
 
 const bookingForm = document.getElementById("bookingForm");
 
-if (bookingForm) {
+if(bookingForm){
 
     bookingForm.addEventListener("submit", function(e){
 
         e.preventDefault();
 
-        const inputs = bookingForm.querySelectorAll("input, textarea");
+        alert("✅ Thank you! Your booking request has been received. We will contact you shortly.");
 
-        const name = inputs[0].value;
-        const phone = inputs[1].value;
-        const email = inputs[2].value;
-        const location = inputs[3].value;
-        const problem = inputs[4].value;
-
-        const message =
-`Hello KOFGYES Plumbing Service,
-
-My Name: ${name}
-
-Phone: ${phone}
-
-Email: ${email}
-
-Location: ${location}
-
-Plumbing Problem:
-${problem}`;
-
-        const url =
-"https://wa.me/233550219648?text=" + encodeURIComponent(message);
-
-        window.open(url, "_blank");
+        bookingForm.reset();
 
     });
 
 }
-// ===== PWA Install =====
+// ===== CALLBACK FORM =====
 
-let deferredPrompt;
+const callbackForm = document.getElementById("callbackForm");
 
-const installBanner = document.getElementById("installBanner");
-const installBtn = document.getElementById("installBtn");
-const closeInstall = document.getElementById("closeInstall");
+if(callbackForm){
 
-window.addEventListener("beforeinstallprompt", (e) => {
+    callbackForm.addEventListener("submit", function(e){
 
-    e.preventDefault();
+        e.preventDefault();
 
-    deferredPrompt = e;
+        alert("✅ Thank you! We'll call you back shortly.");
 
-    installBanner.style.display = "flex";
+        callbackForm.reset();
 
-});
+    });
 
-installBtn.addEventListener("click", async () => {
+}
+// ===== EMAILJS BOOKING =====
 
-    installBanner.style.display = "none";
+const bookingForm = document.getElementById("bookingForm");
 
-    deferredPrompt.prompt();
+if (bookingForm) {
 
-    await deferredPrompt.userChoice;
+    bookingForm.addEventListener("submit", function (e) {
 
-    deferredPrompt = null;
+        e.preventDefault();
 
-});
+        emailjs.send("service_3dbl88d", "template_ybtij4c", {
+            name: document.getElementById("name").value,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value,
+            location: document.getElementById("location").value,
+            message: document.getElementById("message").value
+        })
 
-closeInstall.addEventListener("click", () => {
+        .then(() => {
 
-    installBanner.style.display = "none";
+            alert("✅ Booking request sent successfully!");
 
-});
-// ===== Register Service Worker =====
+            bookingForm.reset();
 
-if ("serviceWorker" in navigator) {
+        })
 
-    window.addEventListener("load", () => {
+        .catch((error) => {
 
-        navigator.serviceWorker.register("./sw.js")
-            .then(() => {
+            console.error(error);
 
-                console.log("Service Worker registered successfully!");
+            alert("❌ Failed to send booking. Please try again.");
 
-            })
-            .catch((error) => {
-
-                console.log("Service Worker registration failed:", error);
-
-            });
+        });
 
     });
 
