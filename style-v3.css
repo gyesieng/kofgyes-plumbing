@@ -1,0 +1,865 @@
+/* ===================================
+   KOFGYES PLUMBING CSS V3.0
+   RESET + VARIABLES + GLOBAL
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f8fafc;
+    color:#1e293b;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+/* ---------- VARIABLES ---------- */
+
+:root{
+
+    --primary:#0ea5e9;
+    --primary-dark:#0284c7;
+
+    --dark:#0f172a;
+
+    --text:#475569;
+
+    --white:#ffffff;
+
+    --light:#f8fafc;
+
+    --border:#e2e8f0;
+
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+}
+
+/* ---------- GLOBAL ---------- */
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
+
+section{
+
+    padding:90px 0;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:55px;
+
+}
+
+.section-title h2{
+
+    font-size:40px;
+
+    color:var(--dark);
+
+    margin-bottom:15px;
+
+}
+
+.section-title p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+/* ===================================
+   HEADER & NAVIGATION
+=================================== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#0f172a;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+}
+
+.logo img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav-menu a{
+    color:#fff;
+    font-weight:600;
+    transition:.3s;
+    position:relative;
+}
+
+.nav-menu a:hover{
+    color:var(--primary);
+}
+
+.nav-menu a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0;
+    height:2px;
+    background:var(--primary);
+    transition:.3s;
+}
+
+.nav-menu a:hover::after{
+    width:100%;
+}
+
+.book-btn{
+    background:var(--primary);
+    color:#fff !important;
+    padding:12px 22px;
+    border-radius:30px;
+}
+
+.book-btn:hover{
+    background:var(--primary-dark);
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+/* ===================================
+   HERO
+=================================== */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+
+    background:
+        linear-gradient(rgba(15,23,42,.72),rgba(15,23,42,.72)),
+        url("images/plumbing-bg.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.hero-content{
+    width:90%;
+    max-width:850px;
+    margin:auto;
+}
+
+.hero h1{
+    font-size:clamp(42px,6vw,64px);
+    line-height:1.15;
+    margin-bottom:22px;
+    font-weight:800;
+}
+
+.hero p{
+    font-size:20px;
+    color:#e2e8f0;
+    max-width:700px;
+    margin:0 auto 35px;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px 34px;
+    border-radius:40px;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:#22c55e;
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    background:#16a34a;
+    transform:translateY(-3px);
+}
+/* ===================================
+   ABOUT
+=================================== */
+
+.about{
+    background:var(--white);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.about-card{
+    background:var(--white);
+    padding:35px 25px;
+    border-radius:var(--radius);
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+    border:1px solid var(--border);
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+}
+
+.about-card i{
+    font-size:48px;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.about-card h3{
+    margin-bottom:12px;
+    color:var(--dark);
+}
+
+.about-card p{
+    color:var(--text);
+    line-height:1.8;
+}
+
+/* ===================================
+   SERVICES
+=================================== */
+
+.services{
+    background:var(--light);
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.service-card{
+    background:var(--white);
+    padding:35px 30px;
+    border-radius:var(--radius);
+    text-align:center;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+    transition:.3s ease;
+}
+
+.service-card:hover{
+    transform:translateY(-8px);
+}
+
+.service-card i{
+    font-size:50px;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    margin-bottom:15px;
+    color:var(--dark);
+}
+
+.service-card p{
+    color:var(--text);
+    line-height:1.8;
+}
+
+.service-card.emergency{
+    border-top:4px solid #ef4444;
+}
+/* ===================================
+   WHY CHOOSE US
+=================================== */
+
+.why-us{
+    background:var(--white);
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.why-item{
+    background:var(--white);
+    padding:35px 25px;
+    text-align:center;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+}
+
+.why-item:hover{
+    transform:translateY(-8px);
+}
+
+.why-item i{
+    font-size:48px;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.why-item h3{
+    margin-bottom:12px;
+    color:var(--dark);
+}
+
+.why-item p{
+    color:var(--text);
+    line-height:1.8;
+}
+
+/* ===================================
+   VIDEO GALLERY
+=================================== */
+
+.video-gallery{
+    background:var(--light);
+}
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.video-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+}
+
+.video-card:hover{
+    transform:translateY(-8px);
+}
+
+.video-card video{
+    width:100%;
+    display:block;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+
+.video-card h3{
+    padding:20px;
+    text-align:center;
+    color:var(--dark);
+    font-size:18px;
+}
+/* ===================================
+   EMERGENCY BANNER
+=================================== */
+
+.emergency-banner{
+    background:linear-gradient(135deg,#dc2626,#ef4444);
+    color:#fff;
+    text-align:center;
+    padding:50px 20px;
+}
+
+.emergency-banner i{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.emergency-banner h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.emergency-banner p{
+    max-width:650px;
+    margin:0 auto 25px;
+    line-height:1.8;
+    color:#f8fafc;
+}
+
+.emergency-banner .hero-btn{
+    background:#fff;
+    color:#dc2626;
+}
+
+.emergency-banner .hero-btn:hover{
+    background:#f8fafc;
+}
+
+/* ===================================
+   TRUST GUARANTEE
+=================================== */
+
+.guarantee{
+    background:var(--white);
+}
+
+.guarantee-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.guarantee-card{
+    background:var(--white);
+    padding:35px 25px;
+    text-align:center;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+}
+
+.guarantee-card:hover{
+    transform:translateY(-8px);
+}
+
+.guarantee-card i{
+    font-size:48px;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.guarantee-card h3{
+    margin-bottom:15px;
+    color:var(--dark);
+}
+
+.guarantee-card p{
+    color:var(--text);
+    line-height:1.8;
+}
+/* ===================================
+   TESTIMONIALS
+=================================== */
+
+.testimonials{
+    background:var(--light);
+}
+
+.testimonial-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.testimonial-card{
+    background:var(--white);
+    padding:35px 30px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+    position:relative;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-8px);
+}
+
+.testimonial-card i{
+    font-size:36px;
+    color:var(--primary);
+    margin-bottom:20px;
+}
+
+.testimonial-card p{
+    color:var(--text);
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.testimonial-card h4{
+    color:var(--dark);
+    font-size:17px;
+}
+
+
+/* ===================================
+   FAQ
+=================================== */
+
+.faq{
+    background:var(--white);
+}
+
+.faq-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.faq-item{
+    background:var(--white);
+    margin-bottom:18px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.faq-question{
+    width:100%;
+    background:none;
+    border:none;
+    padding:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:600;
+    color:var(--dark);
+}
+
+.faq-question span{
+    font-size:28px;
+    color:var(--primary);
+    transition:.3s;
+}
+
+.faq-item.active .faq-question span{
+    transform:rotate(45deg);
+}
+
+.faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+}
+
+.faq-answer p{
+    padding:0 22px 22px;
+    color:var(--text);
+    line-height:1.8;
+}
+/* ===================================
+   CONTACT
+=================================== */
+
+.contact{
+    background:var(--light);
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    margin-top:50px;
+}
+
+.contact-card{
+    background:var(--white);
+    padding:35px 25px;
+    text-align:center;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s ease;
+}
+
+.contact-card:hover{
+    transform:translateY(-8px);
+}
+
+.contact-card i{
+    font-size:45px;
+    color:var(--primary);
+    margin-bottom:18px;
+}
+
+.contact-card h3{
+    margin-bottom:12px;
+    color:var(--dark);
+}
+
+.contact-card p{
+    color:var(--text);
+}
+
+/* ===================================
+   BOOKING
+=================================== */
+
+.booking{
+    background:var(--white);
+}
+
+.booking-form{
+    max-width:700px;
+    margin:50px auto 0;
+}
+
+.booking-form input,
+.booking-form textarea{
+    width:100%;
+    padding:16px 18px;
+    margin-bottom:20px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(14,165,233,.15);
+}
+
+.booking-form textarea{
+    resize:vertical;
+    min-height:150px;
+}
+
+.booking-form button{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:var(--primary);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.booking-form button:hover{
+    background:var(--primary-dark);
+}
+/* ===================================
+   FOOTER
+=================================== */
+
+.footer{
+    background:#0f172a;
+    color:#fff;
+    padding:70px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.footer h3{
+    margin-bottom:18px;
+}
+
+.footer p,
+.footer li{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.footer ul li{
+    margin-bottom:10px;
+}
+
+.footer a{
+    color:#cbd5e1;
+    transition:.3s;
+}
+
+.footer a:hover{
+    color:var(--primary);
+}
+
+.footer hr{
+    border:none;
+    height:1px;
+    background:#334155;
+    margin:40px 0 20px;
+}
+
+.copyright{
+    text-align:center;
+    color:#94a3b8;
+}
+
+/* ===================================
+   FLOATING BUTTONS
+=================================== */
+
+.floating-whatsapp,
+.floating-call{
+    position:fixed;
+    right:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:26px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+    z-index:999;
+    transition:.3s;
+}
+
+.floating-whatsapp{
+    bottom:90px;
+    background:#25D366;
+}
+
+.floating-call{
+    bottom:20px;
+    background:#0284c7;
+}
+
+.floating-whatsapp:hover,
+.floating-call:hover{
+    transform:scale(1.1);
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+
+@media (max-width:768px){
+
+    .navbar{
+        height:70px;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-menu{
+        position:absolute;
+        top:70px;
+        left:-100%;
+        width:100%;
+        background:#0f172a;
+        flex-direction:column;
+        padding:25px 0;
+        transition:.3s;
+    }
+
+    .nav-menu.active{
+        left:0;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    section{
+        padding:70px 0;
+    }
+}
